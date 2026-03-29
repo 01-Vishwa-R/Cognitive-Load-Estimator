@@ -26,3 +26,4 @@ def get_recommendations(intrinsic, extraneous, germane):
         rec.append("Optimal learning state. Keep going!")
 
     return rec, precautions
+# Example usage 
