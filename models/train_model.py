@@ -2,9 +2,18 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 import joblib
+import os
 
 # Load dataset
-data = pd.read_csv("../data/dataset.csv")
+# Get absolute path to project root
+base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Build dataset path
+data_path = os.path.join(base_path, "data", "dataset.csv")
+
+print("Loading dataset from:", data_path)  # debug
+
+data = pd.read_csv(data_path)
 
 # Features and targets
 X = data.drop(["Intrinsic", "Extraneous", "Germane"], axis=1)
@@ -28,8 +37,8 @@ model_extraneous.fit(X_train, ye_train)
 model_germane.fit(X_train, yg_train)
 
 # Save
-joblib.dump(model_intrinsic, "intrinsic.pkl")
-joblib.dump(model_extraneous, "extraneous.pkl")
-joblib.dump(model_germane, "germane.pkl")
+joblib.dump(model_intrinsic, "models/intrinsic.pkl")
+joblib.dump(model_extraneous, "models/extraneous.pkl")
+joblib.dump(model_germane, "models/germane.pkl")
 
 print("Models trained and saved!")

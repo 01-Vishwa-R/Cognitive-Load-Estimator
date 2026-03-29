@@ -2,9 +2,9 @@ import joblib
 
 def load_models():
     return {
-        "intrinsic": joblib.load("models/intrinsic_model.pkl"),
-        "extraneous": joblib.load("models/extraneous_model.pkl"),
-        "germane": joblib.load("models/germane_model.pkl"),
+        "intrinsic": joblib.load("models/intrinsic.pkl"),
+        "extraneous": joblib.load("models/extraneous.pkl"),
+        "germane": joblib.load("models/germane.pkl"),
     }
 
 def predict_load(input_data):
