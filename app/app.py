@@ -1,8 +1,6 @@
 import streamlit as st
 import sys, os
 
-
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.predict import predict_load
@@ -75,11 +73,11 @@ if st.button("Analyze"):
 
     st.write("Extraneous:", extraneous)
 
+    st.write("Germane:", germane)
+
     st.subheader("🧠 What this means:")
     for e in explanations:
         st.write("- " + e)
-
-    st.write("Germane:", germane)
 
     rec, precautions = get_recommendations(intrinsic, extraneous, germane)
 
@@ -89,4 +87,4 @@ if st.button("Analyze"):
 
     st.subheader("Precautions")
     for p in precautions:
-        st.write("-", p)
+        st.write("-", p) 
